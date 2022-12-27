@@ -13,16 +13,12 @@ namespace ToDo.WPF.ViewModels;
 public partial class AddToDoViewModel : ObservableObject
 {
     [ObservableProperty]
+    [NotifyCanExecuteChangedFor(nameof(AddCommand))]
     private string _toDo = String.Empty;
 
+    private bool IsAddable => _toDo.Trim() != string.Empty;
 
-
-    public AddToDoViewModel()
-    {
-        
-    }
-
-    [RelayCommand]
+    [RelayCommand(CanExecute = nameof(IsAddable))]
     public void Add()
     {
         WeakReferenceMessenger.Default.Send(new AddedTodoMessage(ToDo));
