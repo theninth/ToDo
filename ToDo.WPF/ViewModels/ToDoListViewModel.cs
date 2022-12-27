@@ -1,5 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using ToDo.WPF.Messages;
 
@@ -15,5 +17,11 @@ public partial class ToDoListViewModel : ObservableObject
         {
             Items.Add(m.ToDo);
         });
+    }
+
+    [RelayCommand]
+    public void Delete(string toDo)
+    {
+        Items.Remove(toDo);
     }
 }
