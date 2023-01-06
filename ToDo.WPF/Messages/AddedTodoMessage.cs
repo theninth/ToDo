@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CommunityToolkit.Mvvm.Messaging.Messages;
+﻿using ToDo.WPF.Models;
 
 namespace ToDo.WPF.Messages;
 
 public sealed class AddedTodoMessage
 {
-    public string ToDo { get; set; }
+    public ToDoItem ToDoItem { get; set; }
 
-    public AddedTodoMessage(string toDo)
+    public AddedTodoMessage(ToDoItem toDoItem)
     {
-        ToDo = toDo;
+        ToDoItem = toDoItem;
     }
 }
